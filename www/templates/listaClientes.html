@@ -1,0 +1,31 @@
+<ion-view>
+    <ion-header-bar class="bar-positive">
+        <div class="buttons">
+            <button class="button button-icon icon ion-ios-minus-outline"
+                    ng-click="data.showDelete = !data.showDelete"></button>
+        </div>
+        <h1 class="title">Addtech</h1>
+        <div class="buttons">
+            <button class="button button-icon icon ion-ios-list-outline" ng-click="sortType = 'nome'; sortReverse = !sortReverse" ></button>
+             <span ng-show="sortType == 'nome' && !sortReverse" class="fa fa-caret-down"></span>
+             <span ng-show="sortType == 'nome' && sortReverse" class="fa fa-caret-up"></span>
+        </div>
+    </ion-header-bar>
+
+    <ion-content>         
+
+        <div>
+            <ion-list show-delete="data.showDelete">
+                <ion-item  ng-repeat="cl in cliente | orderBy:sortType:sortReverse track by $index" class = "item-remove-animate"/> 
+                cliente {{cl.nome}}                       
+
+
+                <ion-delete-button class="ion-minus-circled" 
+                                   ng-click="onItemDelete(cl)">
+                </ion-delete-button>
+        </div>
+        <button class="button button-block button-royal" ng-click="voltarMain()">
+            Voltar
+        </button>
+    </ion-content> 
+</ion-view>

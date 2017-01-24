@@ -1,0 +1,24 @@
+<ion-view title="Login" class="login">
+    <ion-content padding="true" class="" scrollbar-y="false">
+
+        <form id="login-form" class="list invert form-icon">
+            <ion-list id="login-list" class=" ">
+                <label class="item item-input item-floating-label" id="login-usuario">
+                    
+                    <span class="input-label">Login</span>
+                    <input type="text" placeholder="Login" ng-model="data.username">
+                </label>
+                <label class="item item-input item-floating-label" id="login-senha">
+                    
+                    <span class="input-label">Senha</span>
+                    <input type="password" placeholder="Senha" ng-model="data.password">
+                </label>
+            </ion-list>
+            <div class="spacer" style="height: 40px;"></div>
+            <button id="login-button" class=" button button button-energized  button-block " ng-click="logar()">ENTRAR</button>
+
+        </form>
+
+
+    </ion-content>
+</ion-view>
