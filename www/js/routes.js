@@ -26,6 +26,16 @@ angular.module('starter').config(function ($stateProvider, $urlRouterProvider, $
                 url: '/listaClientes',
                 templateUrl: 'templates/listaClientes.html',
                 controller: 'listaClientesCtrl'        
+            })
+            
+             .state('alterarCliente', {
+                cache: false,
+                url: '/alterarCliente',
+                templateUrl: 'templates/alterarCliente.html',
+                controller: 'alterarClienteCtrl',
+                params:{
+                    'cliente': {}
+                }
             });
 
 
