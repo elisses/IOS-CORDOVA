@@ -3,17 +3,17 @@ angular.module('starter').factory('listaService', function (DBA) {
 
     dados.salvar = function (cliente) {
         if (isEmpty(cliente.id)) {
-            var parameters = [cliente.nome, cliente.cpf, cliente.endereco, cliente.numero, cliente.status];
-            return DBA.query("INSERT INTO cliente(nome,cpf,endereco,numero,status) VALUES(?,?,?,?,?)", parameters);
+            var parameters = [cliente.nome, cliente.cpf, cliente.endereco, cliente.numero, cliente.status, cliente.foto];
+            return DBA.query("INSERT INTO cliente(nome,cpf,endereco,numero,status,foto) VALUES(?,?,?,?,?,?)", parameters);
         } else {
-            var parameters = [cliente.id, cliente.nome, cliente.cpf, cliente.endereco, cliente.numero, cliente.status, cliente.id];
-            return DBA.query("UPDATE cliente SET id =(?), nome =(?),cpf =(?),endereco =(?),numero =(?),status =(?) WHERE id =(?)", parameters);
+            var parameters = [cliente.id, cliente.nome, cliente.cpf, cliente.endereco, cliente.numero, cliente.status, cliente.foto, cliente.id];
+            return DBA.query("UPDATE cliente SET id =(?), nome =(?),cpf =(?),endereco =(?),numero =(?),status =(?),foto = (?) WHERE id =(?)", parameters);
         }
     };
     
      dados.getById = function (clienteId) {
         var parameters = [clienteId];
-        return DBA.query("SELECT id, nome,cpf,endereco,numero, status FROM usuario WHERE id = (?)", parameters)
+        return DBA.query("SELECT id, nome,cpf,endereco,numero, status,foto FROM usuario WHERE id = (?)", parameters)
                 .then(function (result) {
                     return DBA.get(result);
                 });

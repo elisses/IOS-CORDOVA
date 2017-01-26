@@ -15,7 +15,9 @@
         <div>
             <ion-list show-delete="data.showDelete">
                 <ion-item  ng-repeat="cl in clientes | orderBy:sortType:sortReverse track by $index" class = "item-remove-animate"/> 
-                cliente {{cl.nome}}
+                Foto:<img src="" id="myImage" height="200px" width="200px"/>{{cl.foto}}<br/>
+<br/>
+                Nome:{{cl.nome}}
                 <a class="button button-icon icon ion-edit" ng-click="irAlterarDados(cl)"></a>                    
                 
                 <ion-delete-button class="ion-minus-circled" 

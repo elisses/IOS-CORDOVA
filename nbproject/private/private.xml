@@ -3,9 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/elisvieira/Desktop/Angular_Alura/starter-app%20alterado%20pelo%20hugo2/www/js/app.js</file>
+            <file>file:/C:/Users/elisvieira/Desktop/Angular_Alura/starter-app%20alterado%20pelo%20hugo2/www/templates/alterarCliente.html</file>
+            <file>file:/C:/Users/elisvieira/Desktop/Angular_Alura/starter-app%20alterado%20pelo%20hugo2/www/js/routes.js</file>
+            <file>file:/C:/Users/elisvieira/Desktop/Angular_Alura/starter-app%20alterado%20pelo%20hugo2/www/js/services/ListaService.js</file>
             <file>file:/C:/Users/elisvieira/Desktop/Angular_Alura/starter-app%20alterado%20pelo%20hugo2/www/js/db.js</file>
+            <file>file:/C:/Users/elisvieira/Desktop/Angular_Alura/starter-app%20alterado%20pelo%20hugo2/www/js/controllers/alterarClienteCtrl.js</file>
+            <file>file:/C:/Users/elisvieira/Desktop/Angular_Alura/starter-app%20alterado%20pelo%20hugo2/config.xml</file>
+            <file>file:/C:/Users/elisvieira/Desktop/Angular_Alura/starter-app%20alterado%20pelo%20hugo2/www/js/controllers/listaClientesCtrl.js</file>
+            <file>file:/C:/Users/elisvieira/Desktop/Angular_Alura/starter-app%20alterado%20pelo%20hugo2/www/js/controllers/cadastroClienteCtrl.js</file>
             <file>file:/C:/Users/elisvieira/Desktop/Angular_Alura/starter-app%20alterado%20pelo%20hugo2/www/index.html</file>
+            <file>file:/C:/Users/elisvieira/Desktop/Angular_Alura/starter-app%20alterado%20pelo%20hugo2/www/templates/cadastroCliente.html</file>
+            <file>file:/C:/Users/elisvieira/Desktop/Angular_Alura/starter-app%20alterado%20pelo%20hugo2/www/templates/listaClientes.html</file>
         </group>
     </open-files>
 </project-private>

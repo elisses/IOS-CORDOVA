@@ -1,50 +1,50 @@
-angular.module('starter').controller("cadastroClienteCtrl", function ($scope, $state, cadastroService, $ionicPopup, $cordovaGeolocation) {
+angular.module('starter').controller("cadastroClienteCtrl", function ($scope, $state, cadastroService, $ionicPopup,$cordovaCamera) {
 
     var objectCliente = {};
-    $scope.cliente = {};
-
+    $scope.cliente = {};  
+   
+        
     $scope.SalvarDadosCliente = function () {
         var objectCliente = angular.copy($scope.cliente);
         cadastroService.salvar(objectCliente).then(function (result) {
             $scope.cliente = {};
             $ionicPopup.alert({
                 title: 'Cadastro',
-                template: 'Salvo com sucesso!'                
+                template: 'Salvo com sucesso!'
             });
-            
+
         }, function (error) {
             console.error(error.message);
         });
-
     };
-    $scope.localizacaoCliente = function(){
-        // onSuccess Callback
-        // This method accepts a Position object, which contains the
-        // current GPS coordinates
-        //
-        var onSuccess = function (position) {
-            alert('Latitude: ' + position.coords.latitude + '\n' +
-                    'Longitude: ' + position.coords.longitude + '\n' +
-                    'Altitude: ' + position.coords.altitude + '\n' +
-                    'Accuracy: ' + position.coords.accuracy + '\n' +
-                    'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
-                    'Heading: ' + position.coords.heading + '\n' +
-                    'Speed: ' + position.coords.speed + '\n' +
-                    'Timestamp: ' + position.timestamp + '\n');
-       
 
-             // onError Callback receives a PositionError object
-            //
-            function onError(error) {
-            alert('code: ' + error.code + '\n' +
-                    'message: ' + error.message + '\n');
-            }
+    $scope.takephoto = function(){ document.addEventListener("deviceready", function () {
 
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    var options = {
+      quality: 50,
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,
+      allowEdit: true,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 100,
+      targetHeight: 100,
+      popoverOptions: CameraPopoverOptions,
+      saveToPhotoAlbum: false,
+      correctOrientation:true
     };
-    
+
+   
+     $cordovaCamera.getPicture(options).then(function(imageData) {
+      var image = document.getElementById('myImage');
+      image.src = "data:image/jpeg;base64," + imageData;
+    }, function(error) {
+      console.error(error.message);
+    });
+
+  });
+    };
+
     $scope.voltarMain = function () {
         $state.go('main');
     };
-  
 });
