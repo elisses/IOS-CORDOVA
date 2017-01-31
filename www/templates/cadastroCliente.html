@@ -5,8 +5,11 @@
 
     <ion-content>
         <div class="list">
-            <form novalidate>                  
-               
+            <form novalidate>  
+                
+                <img  ng-src="data:image/jpeg;base64,{{cliente.foto}}" id="myImage" /><br/>
+                <input type="button" ng-click="tirarFoto()" value="Tire sua foto" />
+                
                 <label class="item item-input">
                     <span class="input-label" >Nome:</span>
                     <input type="text" ng-model="cliente.nome">
@@ -27,10 +30,6 @@
                     <span class="input-label">Status:</span>
                     <input type="text" ng-model="cliente.status">
                 </label>
-                
-                 <img  ng-src="" id="myImage"/><br/>
-                 <input type="button" ng-click="tirarFoto()" value="Tire sua foto" ng-model="cliente.foto" />
-                
 
                 <button class="button button-block button-balanced" ng-click="SalvarDadosCliente(cliente)">
                     Salvar
@@ -38,7 +37,7 @@
                 <button class="button button-block button-royal" ng-click="voltarMain()">
                     Voltar
                 </button>
-            {{cliente}}
+            </form>            
         </div>
 
 
