@@ -14,9 +14,32 @@ angular.module('starter').controller("alterarClienteCtrl", function ($scope, $st
             console.error(error.message);
         });
     };
+    $scope.ArquivoFoto = function () {     
 
-     $scope.tirarFoto = function () {
-        document.addEventListener("deviceready", function () {
+            var options = {
+                quality: 50,
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.CAMERA,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG,
+                targetWidth: 100,
+                targetHeight: 100,
+                popoverOptions: CameraPopoverOptions,
+                saveToPhotoAlbum: false,
+                correctOrientation: true
+            };
+
+            $cordovaCamera.getPicture(options).then(function (foto) {
+                var image = document.getElementById('myImage');                
+                image.src = foto;
+                
+                $scope.cliente.foto = foto;
+            }, function (error) {
+                console.error(error.message);
+            });       
+    };
+    
+     $scope.tirarFoto = function () {     
 
             var options = {
                 quality: 50,
@@ -31,15 +54,14 @@ angular.module('starter').controller("alterarClienteCtrl", function ($scope, $st
                 correctOrientation: true
             };
 
-            $cordovaCamera.getPicture(options).then(function (imageData) {
+            $cordovaCamera.getPicture(options).then(function (foto) {
                 var image = document.getElementById('myImage');                
-                image.src = "data:image/jpeg;base64," + imageData;
+                image.src = "data:image/jpeg;base64," + foto;
+                
+                $scope.cliente.foto = foto;
             }, function (error) {
                 console.error(error.message);
-
-            });
-
-        }, false);
+            });       
     };
 
     $scope.voltarMain = function () {
