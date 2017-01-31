@@ -20,7 +20,7 @@ angular.module('starter').controller("alterarClienteCtrl", function ($scope, $st
             var options = {
                 quality: 50,
                 destinationType: Camera.DestinationType.DATA_URL,
-                sourceType: Camera.PictureSourceType.CAMERA,
+                sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
                 allowEdit: true,
                 encodingType: Camera.EncodingType.JPEG,
                 targetWidth: 100,
@@ -32,8 +32,7 @@ angular.module('starter').controller("alterarClienteCtrl", function ($scope, $st
 
             $cordovaCamera.getPicture(options).then(function (foto) {
                 var image = document.getElementById('myImage');                
-                image.src = foto;
-                
+                image.src = "data:image/jpeg;base64," + foto;                
                 $scope.cliente.foto = foto;
             }, function (error) {
                 console.error(error.message);
@@ -57,8 +56,7 @@ angular.module('starter').controller("alterarClienteCtrl", function ($scope, $st
 
             $cordovaCamera.getPicture(options).then(function (foto) {
                 var image = document.getElementById('myImage');                
-                image.src = "data:image/jpeg;base64," + foto;
-                
+                image.src = "data:image/jpeg;base64," + foto;                
                 $scope.cliente.foto = foto;
             }, function (error) {
                 console.error(error.message);
