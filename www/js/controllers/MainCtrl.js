@@ -54,4 +54,21 @@ angular.module('starter').controller("mainCtrl", function ($scope, authService, 
     $scope.listCliente = function(){
         $state.go("listaClientes");
     };
+    
+    //geolocalização
+    var posOptions = {timeout: 10000, enableHighAccuracy: false};
+    $scope.pegandoSuaLocalizacao = function(){
+       $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position){
+           $scope.lat=position.coords.latitude;
+           $scope.lang=position.coords.longitude;
+           
+           console.log(lat +"E"+ lang);
+       }, function (error) {
+                console.error(error.message);
+            });      
+     };    
+     $scope.suaLocalizacao = function () {
+
+        $state.go("suaLocalizacao");
+    };
 });

@@ -36,6 +36,14 @@ angular.module('starter').config(function ($stateProvider, $urlRouterProvider, $
                 params:{
                     'cliente': {}
                 }
+            })
+            
+            .state('suaLocalizacao', {
+                cache: false,
+                url: '/suaLocalizacao',
+                templateUrl: 'templates/suaLocalizacao.html',
+                controller: 'suaLocalizacaoCtrl'
+               
             });
 
 

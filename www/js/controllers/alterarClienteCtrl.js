@@ -13,12 +13,13 @@ angular.module('starter').controller("alterarClienteCtrl", function ($scope, $st
         }, function (error) {
             console.error(error.message);
         });
-    };
+    };    
+    
     $scope.ArquivoFoto = function () {     
 
             var options = {
                 quality: 50,
-                destinationType: Camera.DestinationType.FILE_URI,
+                destinationType: Camera.DestinationType.DATA_URL,
                 sourceType: Camera.PictureSourceType.CAMERA,
                 allowEdit: true,
                 encodingType: Camera.EncodingType.JPEG,
