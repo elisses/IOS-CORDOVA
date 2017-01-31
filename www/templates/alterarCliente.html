@@ -6,8 +6,8 @@
     <ion-content>
         <div class="list">
             <form novalidate>                
-                <img src="" id="myImage" height="200px" width="200px" ng-model="cliente.foto"/><br/>
-                <input type="button" ng-click="takephoto()" value="Tire sua foto" />
+                <img  ng-src="" id="myImage" /><br/>
+                <input type="button" ng-click="tirarFoto()" value="Tire sua foto" ng-model="cliente.foto" />
                 <label class="item item-input">
                     <span class="input-label" >Nome:</span>
                     <input type="text" ng-model="cliente.nome">

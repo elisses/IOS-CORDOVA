@@ -1,4 +1,4 @@
-angular.module('starter').controller("alterarClienteCtrl", function ($scope, $state, cadastroService, $stateParams, $ionicPopup) {
+angular.module('starter').controller("alterarClienteCtrl", function ($scope, $state, cadastroService, $stateParams, $ionicPopup,$cordovaCamera) {
 
     $scope.cliente = $stateParams.cliente;
 
@@ -15,8 +15,9 @@ angular.module('starter').controller("alterarClienteCtrl", function ($scope, $st
         });
     };
 
-    $scope.takephoto = function () {
+     $scope.tirarFoto = function () {
         document.addEventListener("deviceready", function () {
+
             var options = {
                 quality: 50,
                 destinationType: Camera.DestinationType.DATA_URL,
@@ -29,14 +30,16 @@ angular.module('starter').controller("alterarClienteCtrl", function ($scope, $st
                 saveToPhotoAlbum: false,
                 correctOrientation: true
             };
+
             $cordovaCamera.getPicture(options).then(function (imageData) {
-                var image = document.getElementById('myImage');
+                var image = document.getElementById('myImage');                
                 image.src = "data:image/jpeg;base64," + imageData;
             }, function (error) {
                 console.error(error.message);
+
             });
 
-        });
+        }, false);
     };
 
     $scope.voltarMain = function () {
