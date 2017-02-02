@@ -44,6 +44,14 @@ angular.module('starter').config(function ($stateProvider, $urlRouterProvider, $
                 templateUrl: 'templates/suaLocalizacao.html',
                 controller: 'suaLocalizacaoCtrl'
                
+            })
+            
+             .state('albumFotos', {
+                cache: false,
+                url: '/albumFotos',
+                templateUrl: 'templates/albumFotos.html',
+                controller: 'albumFotosCtrl'
+               
             });
 
 

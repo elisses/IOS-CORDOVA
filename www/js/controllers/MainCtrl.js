@@ -71,4 +71,10 @@ angular.module('starter').controller("mainCtrl", function ($scope, authService, 
 
         $state.go("suaLocalizacao");
     };
+    
+    //album de fotos
+    
+    $scope.albumDeFotos =  function(){
+        $state.go("albumFotos");
+    };
 });

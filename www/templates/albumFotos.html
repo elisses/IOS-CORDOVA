@@ -1,0 +1,21 @@
+<ion-view>
+    <ion-header-bar class="bar-positive">
+
+        <h1 class="title">Addtech-Álbum</h1>       
+    </ion-header-bar>
+
+    <ion-content>         
+
+        <div style="margin-top: 20px">            
+            <div class="row" ng-repeat="(fotosKey,clFoto) in clientes" > 
+                <div style="-webkit-box-flex: 0;-webkit-flex: 0 0 33.3333%;-moz-box-flex: 0;-moz-flex: 0 0 33.3333%;-ms-flex: 0 0 33.3333%;flex: 0 0 33.3333%;max-width: 33.3333%" ng-repeat="(fotokey,cl) in clFoto" >
+                    <img style="max-width:200px;max-height:300px;margin:20px auto;display: block"  ng-src="{{cl}}" id="myImage" ng-click="openFullImg(fotosKey, fotoKey)"  />
+                </div>                      
+            </div>               
+        </div>       
+        
+        <button class="button button-block button-royal" ng-click="voltarMain()">
+            Voltar
+        </button>
+    </ion-content> 
+</ion-view>

@@ -10,9 +10,9 @@ angular.module('starter').factory('cadastroService', function (DBA) {
         }
     };
 
-    dados.getById = function (clienteId) {
+    dados.getByFoto = function (clienteId) {
         var parameters = [clienteId];
-        return DBA.query("SELECT id, nome,cpf,endereco,numero, status,foto FROM cliente WHERE id = (?)", parameters)
+        return DBA.query("SELECT foto FROM cliente WHERE foto = (?)", parameters)
                 .then(function (result) {
                     return DBA.get(result);
                 });

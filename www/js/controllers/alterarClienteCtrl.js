@@ -65,7 +65,7 @@ angular.module('starter').controller("alterarClienteCtrl", function ($scope, $st
 
     $scope.voltarMain = function () {
 
-        $state.go('main');
+        $state.go('listaClientes');
     };
 });
 
