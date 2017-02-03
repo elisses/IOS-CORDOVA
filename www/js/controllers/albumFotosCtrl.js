@@ -1,19 +1,20 @@
-angular.module('starter').controller("albumFotosCtrl", function ($scope, $state, cadastroService, $timeout,$ionicModal) {
+angular.module('starter').controller("albumFotosCtrl", function ($scope, $state, AlbumService, $timeout,$ionicModal) {
 
 
     $scope.clientes = [];
-    cadastroService.all().then(function (result) {
+    AlbumService.all().then(function (result) {
         $scope.clientes = result;
     }, function (error) {
         console.error(error.message);
     });
+    
+    
 
-
-// Galeria de fotos //
+    // Galeria de fotos //
     $scope.fullViewVisible = undefined;
     $scope.imgs = [];
 
-    cadastroService.getByFoto().then(function (foto) {
+    AlbumService.getByFoto().then(function (foto) {
         $scope.imgs = foto;
     }, function (error) {
         console.error(error.message);

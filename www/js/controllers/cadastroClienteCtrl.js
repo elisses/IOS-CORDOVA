@@ -2,6 +2,7 @@ angular.module('starter').controller("cadastroClienteCtrl", function ($scope, $s
 
     var objectCliente = {};
     $scope.cliente = {};
+     $scope.imagens = {};
     //foto do arquivo da camera
      $scope.ArquivoFoto = function () {     
 
@@ -28,7 +29,7 @@ angular.module('starter').controller("cadastroClienteCtrl", function ($scope, $s
             });       
     };
     
-    //tirar a foto da camera e converter em base 64
+    //tirar a foto de perfil da camera e converter em base 64
      $scope.tirarFoto = function () {
         var options = {
             quality: 50,
@@ -50,6 +51,33 @@ angular.module('starter').controller("cadastroClienteCtrl", function ($scope, $s
             
             $scope.cliente.foto = foto;
             console.log(foto);              
+        }, function (error) {
+            console.error(error.message);
+
+        });
+    };    
+//tirar várias  fotos 
+    $scope.SelecionarFotos = function () {
+        var options = {
+            quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 100,
+            targetHeight: 100,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false,
+            correctOrientation: true
+        };
+
+        $cordovaCamera.getPicture(options).then(function (imagem) {
+
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imagem;
+            
+            $scope.imagens.imagens = imagem;
+            console.log(imagem);              
         }, function (error) {
             console.error(error.message);
 

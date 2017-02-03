@@ -4,11 +4,12 @@ angular.module('starter').service('inicializarBancoDeDados', function ($cordovaS
     var _criarBancoDeDados = function (db) {
 
         $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS usuario (id integer primary key, nome text, login text NOT NULL, senha text NOT NULL, status integer NOT NULL, role text, autenticado integer)").then(function () {
-            $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS cliente (id integer primary key,nome text, cpf text NOT NULL, endereco text, numero text, status integer NOT NULL)");
-            $cordovaSQLite.execute(db,"ALTER TABLE cliente COLUMN foto blod");
+            $cordovaSQLite.execute(db,"CREATE TABLE IF NOT EXISTS cliente (id integer primary key,nome text, cpf text NOT NULL, endereco text, numero text, status integer NOT NULL)");            
             $cordovaSQLite.execute(db,"ALTER TABLE cliente COLUMN foto text");
-        });
-
+            $cordovaSQLite.execute(db,"CREATE TABLE IF NOT EXISTS imagens (id integer primary key, imagens text, idCliente integer not null, FOREIGN KEY(idCliente) REFERENCES cliente(id))");             
+        });       
+        
+            
     };
 
     var _recriarBancoDeDados = function (db) {

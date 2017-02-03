@@ -31,7 +31,18 @@
                 <label class="item item-input">
                     <span class="input-label">Status:</span>
                     <input type="text" ng-model="cliente.status">
-                </label>                
+                </label> 
+                 <div>
+                     <div ng-repeat="img in imagens">
+                         <img  ng-src="data:image/jpeg;base64,{{img.imagens}}" id="myImage" />
+                     </div>
+                     
+                     <button class="button button-block button-balanced" ng-click="SelecionarFotos()">
+                    Selecionar Fotos
+                    </button>
+                 </div>
+                 
+                 
                 <button class="button button-block button-balanced" ng-click="SalvarDadosCliente(cliente)">
                     Salvar
                 </button>
