@@ -74,7 +74,7 @@ angular.module('starter').controller("mainCtrl", function ($scope, authService, 
     
     //album de fotos
     
-    $scope.albumDeFotos =  function(){
-        $state.go("albumFotos");
+        $scope.albumDeFotos =  function(){
+        $state.go("AlbumFotosGeral");
     };
 });

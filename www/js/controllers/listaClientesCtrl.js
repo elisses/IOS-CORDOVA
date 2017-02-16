@@ -2,6 +2,8 @@ angular.module('starter').controller("listaClientesCtrl", function ($scope, $sta
 
 
     $scope.clientes = [];
+    
+    //carregar todos os dados do cliente
     cadastroService.all().then(function (result) {
         $scope.clientes = result;
         
@@ -13,6 +15,7 @@ angular.module('starter').controller("listaClientesCtrl", function ($scope, $sta
         showDelete: false
     };
 
+    //alterar os dados do cliente
     $scope.alterar = function (cliente) {
 
         var objectCliente = angular.copy(cliente);
@@ -27,6 +30,7 @@ angular.module('starter').controller("listaClientesCtrl", function ($scope, $sta
 
     };
 
+    //deletar os dados do cliente
     $scope.onItemDelete = function (cliente) {
         listaService.remove(cliente).then(function () {
 
@@ -40,11 +44,19 @@ angular.module('starter').controller("listaClientesCtrl", function ($scope, $sta
     $scope.sortType = 'nome';
     $scope.sortReverse = false;
 
+    //ir até a página de alteração de dados
     $scope.irAlterarDados = function (cl) {
 
         $state.go('alterarCliente',{'cliente':cl});
     };
+    
+    //ir até a página de albums
+    $scope.irAlbum = function () {
 
+        $state.go('albumFotos');
+    };
+
+    //voltar a pg principal
     $scope.voltarMain = function () {
 
         $state.go('main');

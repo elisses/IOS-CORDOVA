@@ -1,21 +1,51 @@
-angular.module('starter').controller("albumFotosCtrl", function ($scope, $state, AlbumService, $timeout,$ionicModal) {
+angular.module('starter').controller("albumFotosCtrl", function ($scope, $state, AlbumService, $timeout,$ionicModal,$cordovaCamera) {
 
 
     $scope.clientes = [];
+    $scope.album = [];
+    
+    //carregar todos os dados do cliente
     AlbumService.all().then(function (result) {
-        $scope.clientes = result;
+        $scope.album = result;
+        
     }, function (error) {
         console.error(error.message);
     });
     
-    
+     //tirar a foto de perfil da camera e converter em base 64
+     $scope.tirarFoto = function () {
+        var options = {
+            quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 100,
+            targetHeight: 100,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false,
+            correctOrientation: true
+        };
+
+        $cordovaCamera.getPicture(options).then(function (foto) {
+
+            var image = document.getElementById('myPhoto');
+            image.src = "data:image/jpeg;base64," + foto;
+            AlbumService.salvar(foto);
+            $scope.album.imagens = foto;            
+            console.log(foto);              
+        }, function (error) {
+            console.error(error.message);
+
+        });
+    };    
 
     // Galeria de fotos //
     $scope.fullViewVisible = undefined;
     $scope.imgs = [];
 
     AlbumService.getByFoto().then(function (foto) {
-        $scope.imgs = foto;
+        $scope.imagens = foto;
     }, function (error) {
         console.error(error.message);
     });
@@ -71,7 +101,7 @@ angular.module('starter').controller("albumFotosCtrl", function ($scope, $state,
 
 //-----fim galeria-----//
     $scope.voltarMain = function () {
-        $state.go('main');
+        $state.go('listaClientes');
     };
 });
 

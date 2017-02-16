@@ -7,13 +7,10 @@
     <ion-content>         
 
         <div>
-                <ion-item  ng-repeat="al in album " /> 
-                <img  ng-src="data:image/jpeg;base64,{{al.imagens}}" id="myPhoto" /><br/>
-        </div> 
-           
-        <button class="button button-block button-royal" ng-click="tirarFoto()">
-            Capturar foto
-        </button>
+                <ion-item  ng-repeat="cl in clientes " /> 
+                <img  ng-src="data:image/jpeg;base64,{{cl.foto}}" id="myImage" /><br/>
+        </div>        
+       
         <button class="button button-block button-royal" ng-click="voltarMain()">
             Voltar
         </button>

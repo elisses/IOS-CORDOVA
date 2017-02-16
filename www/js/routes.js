@@ -52,6 +52,13 @@ angular.module('starter').config(function ($stateProvider, $urlRouterProvider, $
                 templateUrl: 'templates/albumFotos.html',
                 controller: 'albumFotosCtrl'
                
+            })
+             .state('AlbumFotosGeral', {
+                cache: false,
+                url: '/AlbumFotosGeral',
+                templateUrl: 'templates/AlbumFotosGeral.html',
+                controller: 'albumFotosCtrl'
+               
             });
 
 
