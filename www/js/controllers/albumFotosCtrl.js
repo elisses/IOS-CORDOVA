@@ -1,4 +1,4 @@
-angular.module('starter').controller("albumFotosCtrl", function ($scope, $state, AlbumService, $timeout,$ionicModal,$cordovaCamera) {
+angular.module('starter').controller("albumFotosCtrl", function ($scope, $state, AlbumService, $timeout,$ionicModal,$cordovaCamera,$ionicPopup) {
 
 
     $scope.clientes = [];
@@ -30,15 +30,28 @@ angular.module('starter').controller("albumFotosCtrl", function ($scope, $state,
         $cordovaCamera.getPicture(options).then(function (foto) {
 
             var image = document.getElementById('myPhoto');
-            image.src = "data:image/jpeg;base64," + foto;
-            AlbumService.salvar(foto);
+            image.src = "data:image/jpeg;base64," + foto;           
             $scope.album.imagens = foto;            
             console.log(foto);              
         }, function (error) {
             console.error(error.message);
 
         });
-    };    
+    };  
+    
+    //salvar os dados no banco de dados
+    $scope.SalvarImagem = function () {
+        var objectAlbum = angular.copy($scope.album);
+        AlbumService.salvar(objectAlbum).then(function (result) {           
+           $ionicPopup.alert({
+                title: 'Cadastro',
+                template: 'Salvo com sucesso!'
+                
+            });  
+        }, function (error) {
+            console.error(error.message);
+        });
+    };
 
     // Galeria de fotos //
     $scope.fullViewVisible = undefined;

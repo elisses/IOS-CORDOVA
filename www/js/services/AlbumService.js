@@ -3,8 +3,8 @@ angular.module('starter').factory('AlbumService', function(DBA) {
     
      dados.salvar = function (album) {
         if (isEmpty(album.id)) {
-            var parameters = [album.imagens];
-            return DBA.query("INSERT INTO album(imagens) VALUES(?)", parameters);       
+            var parameters = [album.idCliente,album.imagens];
+            return DBA.query("INSERT INTO album(idCliente,imagens) VALUES(?,?)", parameters);       
         }
     };
 

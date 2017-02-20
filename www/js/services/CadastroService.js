@@ -2,8 +2,8 @@ angular.module('starter').factory('cadastroService', function (DBA) {
     var dados = this;
     dados.salvar = function (cliente) {
         if (isEmpty(cliente.id)) {
-            var parameters = [cliente.nome, cliente.cpf, cliente.endereco, cliente.numero, cliente.status, cliente.foto];
-            return DBA.query("INSERT INTO cliente(nome,cpf,endereco,numero,status,foto) VALUES(?,?,?,?,?,?)", parameters);
+            var parameters = [cliente.id,cliente.nome, cliente.cpf, cliente.endereco, cliente.numero, cliente.status, cliente.foto];
+            return DBA.query("INSERT INTO cliente(id,nome,cpf,endereco,numero,status,foto) VALUES(?,?,?,?,?,?,?)", parameters);
         } else {
             var parameters = [cliente.id, cliente.nome, cliente.cpf, cliente.endereco, cliente.numero, cliente.status,cliente.foto, cliente.id];
             return DBA.query("UPDATE cliente SET id =(?), nome =(?),cpf =(?),endereco =(?),numero =(?),status =(?),foto = (?) WHERE id =(?)", parameters);

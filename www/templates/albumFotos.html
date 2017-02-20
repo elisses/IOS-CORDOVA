@@ -5,15 +5,20 @@
     </ion-header-bar>
 
     <ion-content>         
-
+        <img  ng-src="data:image/jpeg;base64,{{cliente.foto}}" id="myPhoto" /><br/>
+        <button class="button button-block button-royal" ng-click="tirarFoto()">
+            Capturar foto
+        </button>
+        <button class="button button-block button-royal" ng-click="SalvarImagem()">
+           Salvar
+        </button>
+        
         <div>
                 <ion-item  ng-repeat="al in album " /> 
                 <img  ng-src="data:image/jpeg;base64,{{al.imagens}}" id="myPhoto" /><br/>
         </div> 
            
-        <button class="button button-block button-royal" ng-click="tirarFoto()">
-            Capturar foto
-        </button>
+        
         <button class="button button-block button-royal" ng-click="voltarMain()">
             Voltar
         </button>

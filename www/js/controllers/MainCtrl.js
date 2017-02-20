@@ -1,5 +1,5 @@
 angular.module('starter').controller("mainCtrl", function ($scope, authService, $state, $ionicPopover,
-        userService, $ionicScrollDelegate) {
+        userService,AlbumService, $ionicScrollDelegate) {
 
     $scope.titulo = "Starter";
     
@@ -75,6 +75,12 @@ angular.module('starter').controller("mainCtrl", function ($scope, authService, 
     //album de fotos
     
         $scope.albumDeFotos =  function(){
-        $state.go("AlbumFotosGeral");
-    };
+        $state.go("AlbumFotosGeral").then(function(){
+             AlbumService.all().then(function (result) {
+                $scope.album = result;        
+                }, function (error) {
+                    console.error(error.message);
+                });
+            });
+        };
 });
